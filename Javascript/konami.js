@@ -1,3 +1,5 @@
+
+
 // Code taken from the compact, written by user called Peter - https://stackoverflow.com/questions/31626852/how-to-add-konami-code-in-a-website-based-on-html
 
 function onKonamiCode(cb) {
