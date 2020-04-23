@@ -18,37 +18,6 @@ function onKonamiCode(cb) {
   onKonamiCode(function () {alert(' Ah I see you have found my secret, I am very impressed. ')})
 
 
-  /* CLOCK CODE */ 
-
-  function showTime(){
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-    var session = "AM";
-    
-    if(h == 0){
-        h = 12;
-    }
-    
-    if(h > 12){
-        h = h - 12;
-        session = "PM";
-    }
-    
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-    
-    var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("Clock").innerText = time;
-    document.getElementById("Clock").textContent = time;
-    
-    setTimeout(showTime, 1000);
-    
-}
-
-showTime();
 
   /* PRELOAD CODE */
 
@@ -66,102 +35,46 @@ function preloadImages(){
 
 }
 
-preloadImages("assets/ProfilePIC.png", "assets/NewTwitterOverlay.png", "assets/ProfilePic.jpg");
+preloadImages("assets/ProfilePIC.png", "assets/NewTwitterOverlay.png", "assets/ProfilePic.jpg", "assets/ToDoList.png");
 
 
- /* To-Do List */
 
- window.onload = function () {
-    // declared variables
-    let form = document.getElementById("form");
-    let input = document.getElementById("input");
-    let btn = document.getElementById("btn");
-    let list = document.getElementById("list");
-    let btnClear = document.getElementById("btnClear");
-    let id = 1;
+/* DELAYED TEXT */
 
-    //listItem = {item: "todo item", checked: close}
-    let liItem = "";
-    let toDoList = [];
+// https://codepen.io/andydean565/pen/PoqBNOB Given permission to use code. Edited to my liking
 
-    // add event listeners for the form buttons
-    btn.addEventListener("click", addTodoItem);
-    list.addEventListener("click", boxChecked);
-    btnClear.addEventListener("click", clearList);
 
-    
-    if (localStorage.length < 0) {
-            btnClear.style.display = "none"; //hide 'clear' button
-            this.console.log("button");
-    }
+// delay in ms
+let delay = 1000;
 
-    if (localStorage.length <= 0) {
-            btnClear.style.display = "none"; //hide 'clear' button
-    }
+// once doc has been loaded
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('doc ready');
+    // run a function
+    showDelayed();
+}, false);
 
-    // function to add items to the todo list
-    function addTodoItem() {
-            // 3 = signs means absolute
-            if (input.value === "") {
-                    alert("Error: You must enter an item for your list.");
-            }
-            else {
-                    if(list.style.borderTop === "") {
-                            console.log("here..");
-                            list.style.borderTop = "2px solid white";
-                            btnClear.style.display = "inline";
-                    }
-                    let text = input.value;
-                    let item = `<li id="li-${id}">${text}<input id="box-${id}" class="checkboxes" type="checkbox"></li>`;
+window.addEventListener('scroll', function(e) {
+   showDelayed();
+});
 
-                    list.insertAdjacentHTML('beforeend', item);
-                    liItem = {item: text, checked: false};
-                    toDoList.push(liItem);
-                    id++; //increment id by 1
-                    addToLocalStorage(); //function call
-                    form.reset();
-            }
-    }
-    function boxChecked(event) {
-            // change list item styling if the checkbox next to it is clicked
-            const element = event.target;
-            if (element.type === "checkbox") {
-                    element.parentNode.style.textDecoration = "line-through";
-                    todoList = JSON.parse(localStorage.getItem("todoList"));
-                    todoList[element.id.split('-')[1] - 1].checked = element.checked.toString();
-                    localStorage.setItem("todoList", JSON.stringify(todoList));
-            }
-    }
-    function addToLocalStorage() {
-            // does the browser support local storage? if not throw an alert
-            if (typeof (Storage) !== "undefined") {
-                    localStorage.setItem("todoList", JSON.stringify(todoList));
-            } else {
-                    alert("Your browser does not support local storage. Either upgrade or try a different browser");
-            }
-    }
-    function displayList() {
-            list.style.borderTop = "2px solid white";
-            todoList = JSON.parse(localStorage.getItem("todoList"));
-            todoList.forEach(function (element) {
-                    console.log(element.item);
-                    let text = element.item;
-                    let item = `<li id="li-${id}">${text}<input id="box-${id}" class="checkboxes" type="checkbox"></li>`;
-                    list.insertAdjacentHTML("beforeend", item);
-
-                    // alter styling if boxis checked
-                    if (element.checked) {
-                            let li = document.getElementById("li-" + id);
-                            li.style.textDecoration = "line-through";
-                            li.childNodes[1].checked = element.checked;
-                    }
-            });
-    }
-    function clearList() {
-            todoList = [];
-            localStorage.clear();
-            list.innerHTML = "";
-            btnClear.style.display = "none";
-            list.style.borderTop = "";
-    }
+// show the delayed text
+function showDelayed() {
+    // get all elements with the delayed class
+    let elements = document.getElementsByClassName('delayed');
+    // delay the next bit of code 
+    setTimeout(function () {
+        // loop through each element 
+        for (let element of elements) {
+          // check if in viewport
+          let bounding = element.getBoundingClientRect();
+          if (bounding.bottom < window.innerHeight &&  bounding.top > 0){
+           // update css to show element 
+            element.style.opacity = 1;
+          } else {
+            // hide elemnet
+            element.style.opacity = 0;
+          }
+        }
+    }, delay);
 }
