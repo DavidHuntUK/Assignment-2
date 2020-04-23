@@ -392,12 +392,12 @@ h4 #clock{
 
  .hero {
     position: absolute;
-    min-height: 100vh;
-    min-width: 100vw;
+    min-height: 95vh;
+    min-width: 97vw;
     padding-bottom: 0px;
     top: 0;
     bottom: 0;
-    background-color: rgba(31, 34, 118, 0.5);
+    background-color: rgba(102, 41, 206, 0.5);
 }
 
 .checkboxes {
@@ -405,7 +405,7 @@ h4 #clock{
     line-height: 15px;
     width: 17px;
     height: 17px;
-    background-color: #e9ecef;
+    background-color: #ffffff;
     border: 1px solid #e9ecef;
     border-radius: 3px;
 }
