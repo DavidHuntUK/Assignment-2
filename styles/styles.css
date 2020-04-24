@@ -388,28 +388,6 @@ h4 #clock{
     
 }
 
- /* To Do List */
-
- .hero {
-    position: absolute;
-    min-height: 95vh;
-    min-width: 97vw;
-    padding-bottom: 0px;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(102, 41, 206, 0.5);
-}
-
-.checkboxes {
-    float: right;
-    line-height: 15px;
-    width: 17px;
-    height: 17px;
-    background-color: #ffffff;
-    border: 1px solid #e9ecef;
-    border-radius: 3px;
-}
-
 /* Delayed Text */
 .delayed{
     opacity: 0;
