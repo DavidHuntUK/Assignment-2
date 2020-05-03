@@ -37,7 +37,7 @@ function preloadImages() {
 
 }
 
-preloadImages("assets/ProfilePIC.png", "assets/NewTwitterOverlay.png", "assets/ProfilePic.jpg", "assets/ToDoList.png", "assets/RandoQuote.png", "assets/WeatherApp");
+preloadImages("assets/ProfilePIC.png", "assets/NewTwitterOverlay.png", "assets/ProfilePIC.png", "assets/ToDoList.png", "assets/RandoQuote.png", "assets/WeatherApp.png");
 
 
 
