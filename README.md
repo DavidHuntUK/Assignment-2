@@ -14,4 +14,3 @@
 
 [Js1](https://drive.google.com/file/d/1Sk-TVSb3bmVj8aZvlMXcfffKajA8AWrO/view?usp=sharing)
 
-[JS2-Clock](https://drive.google.com/file/d/1beUvGUCRtI8yBzXizFung83UMnwO2mgD/view?usp=sharing)
